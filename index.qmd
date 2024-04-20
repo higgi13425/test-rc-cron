@@ -10,7 +10,16 @@ Note that the BIOFIRE_API_KEY was added to GitHub secrets and is available as an
 
 ```{r setup}
 library(tidyverse)
+library(googlesheets4)
 library(REDCapTidieR)
+```
+
+Test with googlesheets first
+
+```{r}
+gs4_deauth()
+gs <- read_sheet("https://docs.google.com/spreadsheets/d/1rSObbWjQtgty3zBx_W9EJgIw0WJbzAU-sFQXhkWWNsc/edit?resourcekey#gid=19405873482")
+head(gs)
 ```
 
 Define the URL
@@ -23,6 +32,6 @@ redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
 Now get the data, and display first 6 rows.
 
 ```{r}
-data <- read_redcap(redcap_uri, REDCAP_API_KEY = Sys.getenv("REDCAP_API_KEY"))
+data <- read_redcap(redcap_uri, biofire_api_key)
 head(data)
 ```
