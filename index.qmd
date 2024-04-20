@@ -38,3 +38,8 @@ Now get the data, and display first 6 rows.
 data <- read_redcap(redcap_uri, biofire_api_key)
 head(data)
 ```
+
+
+Still would like to do this with Encrypted Secrets in Github Actions,
+https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions
+so that I can schedule this to pull data and render reports weekly to a webpage with cron.
