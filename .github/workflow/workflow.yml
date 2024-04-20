@@ -29,6 +29,7 @@ jobs:
           packages: |
             any::tidyverse 
             any::googlesheets4
+            any::redcapAPI
           
       # Sets up Quarto
       - name: Set up Quarto
