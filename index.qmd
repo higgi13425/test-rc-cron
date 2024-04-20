@@ -1,10 +1,10 @@
 ---
-title: "pull-REDCap"
+title: "Test of Pulling Data from Google Sheets and REDCap"
 format: html
 editor: visual
 ---
 
-## Quarto
+## Setup and then Google Sheets (deauth, as this is public)
 
 Note that the BIOFIRE_API_KEY was added to GitHub secrets and is available as an environment variable in the .Renviron workflow as specified in workflow.yml.
 
@@ -21,6 +21,10 @@ gs4_deauth()
 gs <- read_sheet("https://docs.google.com/spreadsheets/d/1rSObbWjQtgty3zBx_W9EJgIw0WJbzAU-sFQXhkWWNsc/edit?resourcekey#gid=19405873482")
 head(gs)
 ```
+
+
+## Now trying data from REDCap, which uses an API key in the local .Renviron file
+
 
 Define the URL
 
