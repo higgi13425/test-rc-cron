@@ -39,6 +39,7 @@ data <- read_redcap(redcap_uri, biofire_api_key)
 head(data)
 ```
 
+## Remaining Issues
 
 Still would like to do this with Encrypted Secrets in Github Actions,
 https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions
