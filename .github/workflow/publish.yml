@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 3 * * *'
+  - cron: '15 19 * * *'
 
 
 name: Quarto Publish
