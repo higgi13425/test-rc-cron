@@ -6,12 +6,11 @@ library(tidyverse)
 library(REDCapTidieR)
 library(labelled)
 
-# define url and api key
+# define url
 redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
 
-biofire_api_key <- REDCAP_API_KEY
 
 # get the data
-data <- read_redcap(redcap_uri, biofire_api_key)
+data <- read_redcap(redcap_uri, REDCAP_API_KEY)
 
 head(data)
