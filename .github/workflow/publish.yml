@@ -1,7 +1,6 @@
 on:
-  workflow_dispatch:
-  push:
-    branches: [main, gh-pages]
+  schedule:
+    - cron: '55 18 * * *'
 
 
 name: Quarto Publish

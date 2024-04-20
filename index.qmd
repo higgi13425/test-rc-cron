@@ -1,5 +1,5 @@
 ---
-title: "pull-REDCap"
+title: "Testing Pull from REDCap and cron updates"
 format: html
 editor: visual
 ---
@@ -23,6 +23,11 @@ redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
 Now get the data, and display first 6 rows.
 
 ```{r}
-data <- read_redcap(redcap_uri, REDCAP_API_KEY)
+data <- read_redcap(redcap_uri, biofire_api_key)
 head(data)
 ```
+
+
+## Timestamp
+
+This webpage was updated at `r Sys.time()`.
