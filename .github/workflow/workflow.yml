@@ -30,6 +30,16 @@ jobs:
             any::tidyverse 
             any::googlesheets4
             any::redcapAPI
+      
+      # Access redcap api key from secrets
+      - name: Access redcap secret
+        env:
+          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
+          run: echo $REDCAP_API_KEY > .Renviron
+            
+      # Import data from REDCap
+      - name: Import data
+        run: Rscript -e 'source("pull-REDCap.qmd")'
           
       # Sets up Quarto
       - name: Set up Quarto
@@ -42,12 +52,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      # Access redcap api key
-      - name: Access redcap secret
-        env:
-          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
-          run: echo $REDCAP_API_KEY > .Renviron
-        
-      # Import data from REDCap
-      - name: Import data
-        run: Rscript -e 'source("pull-data.R")'
+      
+      

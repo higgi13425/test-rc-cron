@@ -1,0 +1,30 @@
+---
+title: "pull-REDCap"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Note that the BIOFIRE_API_KEY was added to GitHub secrets and is available as an environment variable in the .Renviron workflow as specified in workflow.yml.
+
+```{r setup}
+library(tidyverse)
+library(REDCapTidieR)
+library(labelled)
+```
+
+Define the URL and the API key
+
+```{r}
+redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
+
+biofire_api_key <- REDCAP_API_KEY
+```
+
+Now get the data, and display first 6 rows.
+
+```{r}
+data <- read_redcap(redcap_uri, biofire_api_key)
+head(data)
+```
