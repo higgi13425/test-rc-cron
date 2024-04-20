@@ -1,1 +1,3 @@
 # test-rc-cron
+
+Testing using secrets in GHA and Github Pages to pull REDCap data and then cron scheduling to output to website
