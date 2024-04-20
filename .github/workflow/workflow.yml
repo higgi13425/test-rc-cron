@@ -42,9 +42,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       # Access redcap api key
-      - name: Access secrets
-        with: # set the redcap api key as an input
-          secret: ${{ secrets.REDCAP_API_KEY }}
+      - name: Access redcap secret
+        env:
+          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
+          run: echo $REDCAP_API_KEY > .Renviron
         
       # Import data from REDCap
       - name: Import data

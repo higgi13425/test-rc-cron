@@ -9,7 +9,7 @@ library(labelled)
 # define url and api key
 redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
 
-biofire_api_key <- Sys.setenv(secret) 
+biofire_api_key <- REDCAP_API_KEY
 
 # get the data
 data <- read_redcap(redcap_uri, biofire_api_key)
