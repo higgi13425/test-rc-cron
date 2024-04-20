@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pull-REDCap</title>
+<title>Test of Pulling Data from Google Sheets and REDCap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">pull-REDCap</h1>
+<h1 class="title">Test of Pulling Data from Google Sheets and REDCap</h1>
 </div>
 
 
@@ -94,8 +94,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<section id="setup-and-then-google-sheets-deauth-as-this-is-public" class="level2">
+<h2 class="anchored" data-anchor-id="setup-and-then-google-sheets-deauth-as-this-is-public">Setup and then Google Sheets (deauth, as this is public)</h2>
 <p>Note that the BIOFIRE_API_KEY was added to GitHub secrets and is available as an environment variable in the .Renviron workflow as specified in workflow.yml.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -145,6 +145,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   `How likely are you to use the following Core service: \nstatistical analysis of your data, and/or data from Epic, Epic Cosmos, or NIH All Of Us?` &lt;chr&gt;, …</code></pre>
 </div>
 </div>
+</section>
+<section id="now-trying-data-from-redcap-which-uses-an-api-key-in-the-local-.renviron-file" class="level2">
+<h2 class="anchored" data-anchor-id="now-trying-data-from-redcap-which-uses-an-api-key-in-the-local-.renviron-file">Now trying data from REDCap, which uses an API key in the local .Renviron file</h2>
 <p>Define the URL</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>redcap_uri <span class="ot">&lt;-</span> <span class="st">"https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -1,7 +1,6 @@
 ---
 title: "Test of Pulling Data from Google Sheets and REDCap"
 format: html
-editor: visual
 ---
 
 ## Setup and then Google Sheets (deauth, as this is public)
