@@ -1,6 +1,14 @@
 name: Quarto Publish
+# note - if qmd not rendered to HTML,
+# will not be able to publish to gh-pages, uses README instead
+# currently uses most recent render, does not render anew in GHA
+
+# note2 - is not using the secret stored in GHA repo,
+# not sure why - currently relies on secret stored in local .Renviron,
+# so needs local render to be successful
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "42 9 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
