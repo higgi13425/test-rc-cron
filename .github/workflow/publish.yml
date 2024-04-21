@@ -2,7 +2,7 @@ name: Quarto Publish
 
 on:
   schedule:
-    - cron: "58 12 * * *" # every day at 12:42 UTC
+    - cron: "42 9 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
   build-deploy:
