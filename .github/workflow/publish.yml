@@ -19,7 +19,7 @@ jobs:
         run: echo redcap_api_key = "$REDCAP_API_KEY" >> ~/.Renviron
         env:
           REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}   
-        
+          # ref https://stackoverflow.com/questions/68978306/how-to-reference-github-secrets-in-github-actions-workflow-for-renviron-file
   build-deploy:
     runs-on: ubuntu-latest
     permissions: 
