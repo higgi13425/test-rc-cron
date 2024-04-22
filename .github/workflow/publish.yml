@@ -10,19 +10,21 @@ name: Quarto Publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: "20 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: 30 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
   get-secrets:
     steps:
-      - shell: bash
+      - name: Get REDCap API Key
+        shell: bash
+        run: echo redcap_api_key = "$REDCAP_API_KEY" >> ~/.Renviron
         env:
           REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}   
-        run: echo "${{ secrets.REDCAP_API_KEY }}" > key.txt
-      build-deploy:
-          runs-on: ubuntu-latest
-          permissions: 
-            contents: write
+        
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+    contents: write
       steps:
       - name: Check out repository
         uses: actions/checkout@v4
