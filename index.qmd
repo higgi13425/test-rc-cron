@@ -29,13 +29,13 @@ Define the URL
 
 ```{r}
 redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
-
+REDCAP_API_KEY = Sys.getenv("REDCAP_API_KEY")
 ```
 
 Now get the data, and display first 6 rows.
 
 ```{r}
-data <- read_redcap(redcap_uri, biofire_api_key)
+data <- read_redcap(redcap_uri, REDCAP_API_KEY)
 head(data)
 ```
 
