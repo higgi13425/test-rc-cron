@@ -1,7 +1,7 @@
 name: Quarto Publish
 # note - if qmd not rendered to HTML,
 # will not be able to publish to gh-pages, uses README instead
-# currently uses most recent render, does not render anew in GHA
+# currently uses most recent HTML render, does not render anew in GHA
 
 # note2 - is not using the secret stored in GHA repo,
 # not sure why - currently relies on secret stored in local .Renviron,
@@ -10,38 +10,37 @@ name: Quarto Publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: "59 12 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: "10 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  get-secrets:
     steps:
+      - shell: bash
+        env:
+          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}   
+        run: echo "${{ secrets.REDCAP_API_KEY }}" > key.txt
+      build-deploy:
+          runs-on: ubuntu-latest
+          permissions: 
+            contents: write
+      steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Access redcap secret
-        before-script:
-          run: 'echo "${{ secrets.REDCAP_API_KEY }}" > key.txt'
-          shell: bash
-          env:
-            REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
-          
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.2.0'
           
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-renv@v2
         with:
-          to: html 
+           cache-version: 1
 
-      - name: Publish
+      - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
