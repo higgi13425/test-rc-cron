@@ -8,9 +8,8 @@ name: Quarto Publish
 # so needs local render to be successful
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: 30 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: 33 07 * * *" # every day at 7:33 UTC, 4 h ahead of EST (3:33 EST)
 
 jobs:
   get-secrets:
