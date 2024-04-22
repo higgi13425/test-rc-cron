@@ -10,7 +10,7 @@ name: Quarto Publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: "47 12 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: "49 12 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
   build-deploy:
