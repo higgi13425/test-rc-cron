@@ -10,7 +10,7 @@ name: Quarto Publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: "10 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: "20 13 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
   get-secrets:
