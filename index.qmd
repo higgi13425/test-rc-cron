@@ -29,7 +29,7 @@ Define the URL
 
 ```{r}
 redcap_uri <- "https://redcapproduction.umms.med.umich.edu/redcap_v14.0.15/API/"
-REDCAP_API_KEY = cat('key.txt')
+REDCAP_API_KEY = redcap_api_key
 ```
 
 Now get the data, and display first 6 rows.
