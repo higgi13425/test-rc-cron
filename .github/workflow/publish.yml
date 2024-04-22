@@ -10,7 +10,7 @@ name: Quarto Publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: "42 9 * * *" # every day at 9:42 UTC, 5:42 AM EST
+    - cron: "47 12 * * *" # every day at 9:42 UTC, 5:42 AM EST
 
 jobs:
   build-deploy:
@@ -22,10 +22,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Access redcap secret
-        env:
-          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
-          run: echo $REDCAP_API_KEY > .Renviron
-
+        before-script:
+          run: echo "${{ secrets.REDCAP_API_KEY }}" > .Renviron
+          
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
