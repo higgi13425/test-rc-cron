@@ -10,9 +10,10 @@ name: Quarto Publish
 on:
   push:
     branches:
-      - ["main", "gh=pages"]
+      - main
+      - gh-pages
   schedule:
-    - cron: 33 07 * * *" # every day at 7:33 UTC, 4 h ahead of EST (3:33 EST)
+    - cron: "33 07 * * *"
 
 jobs:
   get-secrets:
