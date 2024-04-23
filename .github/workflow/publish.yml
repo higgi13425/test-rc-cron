@@ -8,17 +8,20 @@ name: Quarto Publish
 # so needs local render to be successful
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: 33 07 * * *" # every day at 7:33 UTC, 4 h ahead of EST (3:33 EST)
 
 jobs:
   get-secrets:
+    runs-on: ubuntu-latest
+    env:
+      REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}
     steps:
-      - name: Get REDCap API Key
-        shell: bash
-        run: echo redcap_api_key = "$REDCAP_API_KEY" >> ~/.Renviron
-        env:
-          REDCAP_API_KEY: ${{ secrets.REDCAP_API_KEY }}   
+      - name: echo REDCap API Key
+        run: echo $REDCAP_API_KEY
           # ref https://stackoverflow.com/questions/68978306/how-to-reference-github-secrets-in-github-actions-workflow-for-renviron-file
   build-deploy:
     runs-on: ubuntu-latest
