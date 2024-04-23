@@ -10,7 +10,7 @@ name: Quarto Publish
 on:
   push:
     branches:
-      - main
+      - ["main", "gh=pages"]
   schedule:
     - cron: 33 07 * * *" # every day at 7:33 UTC, 4 h ahead of EST (3:33 EST)
 
@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: echo REDCap API Key
         run: echo $REDCAP_API_KEY
-          # ref https://stackoverflow.com/questions/68978306/how-to-reference-github-secrets-in-github-actions-workflow-for-renviron-file
+          
   build-deploy:
     runs-on: ubuntu-latest
     permissions: 
